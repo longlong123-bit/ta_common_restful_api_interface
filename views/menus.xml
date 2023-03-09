@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem   id="menu_instances_api_server_root"
+                name="Instances API Server Information"
+                parent="base.menu_custom"
+                sequence="35"/>
+
+    <menuitem   id="menu_instances_api_server_config"
+                name="Instances API server"
+                parent="menu_instances_api_server_root"
+                sequence="1"/>
+
+    <menuitem   id="menu_api_connection_histories"
+                name="API connection histories"
+                parent="menu_instances_api_server_root"
+                sequence="1"/>
+</odoo>

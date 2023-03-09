@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="api_instances_server_form_view" model="ir.ui.view">
+        <field name="name">api.instances.server.form.view</field>
+        <field name="name">api.instances.server</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_test_connection" type="object" string="Connection test" class="btn btn-primary"/>
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="domain_server"/>
+                        </group>
+                        <group>
+                            <field name="username"/>
+                            <field name="password" password="True"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="token" widget="CopyClipboardChar"/>
+                    </group>
+                    <notebook>
+                        <page>
+                            <field name="header_ids"
+                               widget="section_and_note_one2many"
+                               mode="tree,kanban">
+                            <tree editable="bottom">
+                                <field name="key"/>
+                                <field name="value"/>
+                            </tree>
+                            </field>
+                        </page>
+                        <page string="Endpoints" name="endpoints">
+                            <field name="endpoint_ids"
+                                   widget="section_and_note_one2many"
+                                   mode="tree,kanban">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="endpoint"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids" widget="mail_followers"/>
+                     <field name="message_ids" colspan="4" widget="mail_thread" nolabel="1"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="api_instances_server_tree_view" model="ir.ui.view">
+        <field name="name">api.instances.server.tree.view</field>
+        <field name="name">api.instances.server</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="(not active)">
+                <field name="name"/>
+                <field name="domain_server"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="api_instances_server_search_view" model="ir.ui.view">
+        <field name="name">api.instances.server.search.view</field>
+        <field name="model">api.instances.server</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="domain_server"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="api_instances_server_action">
+        <field name="name">Instances API Server</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">api.instances.server</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('api_instances_server_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('api_instances_server_form_view')})]"/>
+        <field name="search_view_id" ref="api_instances_server_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new instances api server.
+            </p>
+        </field>
+    </record>
+</odoo>
