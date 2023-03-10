@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="instances_api_server_headers_form_view" model="ir.ui.view">
+        <field name="name">instances.api.server.headers.form.view</field>
+        <field name="model">instances.api.server.header.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="instances_id"/>
+                        <field name="key"/>
+                        <field name="value"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="instances_api_server_headers_tree_view" model="ir.ui.view">
+        <field name="name">instances.api.server.headers.tree.view</field>
+        <field name="model">instances.api.server.header.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="instances_id"/>
+                <field name="key"/>
+                <field name="value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="instances_api_server_headers_search_view" model="ir.ui.view">
+        <field name="name">instances.api.server.headers.search.view</field>
+        <field name="model">instances.api.server.header.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="instances_id"/>
+                <field name="key"/>
+                <field name="value"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="instances_api_server_header_action">
+        <field name="name">Header Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">instances.api.server.header.line</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('instances_api_server_headers_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('instances_api_server_headers_form_view')})]"/>
+        <field name="search_view_id" ref="instances_api_server_headers_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create an instances api server header line.
+            </p>
+        </field>
+    </record>
+</odoo>

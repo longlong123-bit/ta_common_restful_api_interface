@@ -1,9 +1,9 @@
 {
-    'name': 'Common RESTful API Connector Architecture',
+    'name': 'Common RESTful API Interface Architecture',
     'version': '13.0.1.0',
-    'summary': 'The Common RESTful Connector API Architecture module is an Odoo addon that provides developers with a solution to quickly and conveniently connect to other API servers. This module helps to prevent code duplication, simplify modification, and facilitate maintenance.',
+    'summary': 'This module provides common RESTful API Architecture.',
     'description': """
-        The The Common RESTful Connector API Architecture module is a powerful tool for Odoo developers who need to integrate their applications with other API servers. This module offers a range of features to simplify the process of connecting to external APIs, including standardized API endpoints, customizable response formats, and an intuitive configuration interface.
+        The Common RESTful Connector API Architecture module is a powerful tool for Odoo developers who need to integrate their applications with other API servers. This module offers a range of features to simplify the process of connecting to external APIs, including standardized API endpoints, customizable response formats, and an intuitive configuration interface.
 
         With the The Common RESTful Connector API Architecture module, developers can quickly and easily create new API connections without needing to write custom code for each individual server. This saves time and reduces the risk of errors, while also making it easier to modify and maintain the application over time.
 
@@ -20,17 +20,20 @@
     'author': 'Tangerine',
     'maintainer': 'Tangerine',
     'license': 'OPL-1',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
-        'data/api_request_header_type_data.xml',
-        'views/instances_api_views.xml',
+        'data/api_request_header_data.xml',
+        'views/instances_api_server_views.xml',
+        'views/instances_api_server_header_views.xml',
+        'views/instances_api_server_endpoint_views.xml',
+        'views/api_request_header_views.xml',
         'views/api_connection_histories_views.xml',
         'views/menus.xml'
     ],
-    'images': ['static/description/thumbnail.png'],
+    'images': ['static/description/thumbnail.gif'],
     'currency': 'USD',
-    'price': 31.00,
+    'price': 21.00,
     'installable': True,
     'application': True
 }

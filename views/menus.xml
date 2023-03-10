@@ -3,15 +3,36 @@
     <menuitem   id="menu_instances_api_server_root"
                 name="Instances API Server Information"
                 parent="base.menu_custom"
+                web_icon="ta_common_restful_api_interface,static/description/icon.png"
                 sequence="35"/>
 
     <menuitem   id="menu_instances_api_server_config"
                 name="Instances API server"
                 parent="menu_instances_api_server_root"
+                action="api_instances_server_action"
                 sequence="1"/>
+
+    <menuitem   id="menu_instances_api_server_header_config"
+                name="Header Lines"
+                parent="menu_instances_api_server_root"
+                action="instances_api_server_header_action"
+                sequence="2"/>
+
+    <menuitem   id="menu_instances_api_server_endpoint_config"
+                name="Endpoint Lines"
+                parent="menu_instances_api_server_root"
+                action="instances_api_server_endpoint_action"
+                sequence="3"/>
+
+    <menuitem   id="menu_api_request_header_config"
+                name="API request headers"
+                parent="menu_instances_api_server_root"
+                action="api_connection_histories_action"
+                sequence="4"/>
 
     <menuitem   id="menu_api_connection_histories"
                 name="API connection histories"
                 parent="menu_instances_api_server_root"
-                sequence="1"/>
+                action="api_request_header_action"
+                sequence="5"/>
 </odoo>

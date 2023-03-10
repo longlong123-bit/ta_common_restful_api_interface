@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="api_request_header_form_view" model="ir.ui.view">
+        <field name="name">api.request.header.form.view</field>
+        <field name="model">api.request.header</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="key"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="api_request_header_tree_view" model="ir.ui.view">
+        <field name="name">api.request.header.tree.view</field>
+        <field name="model">api.request.header</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="key"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="api_request_header_search_view" model="ir.ui.view">
+        <field name="name">api.request.header.search.view</field>
+        <field name="model">api.request.header</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="key"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="api_request_header_action">
+        <field name="name">API Request Headers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">api.request.header</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('api_request_header_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('api_request_header_form_view')})]"/>
+        <field name="search_view_id" ref="api_request_header_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create an api request header.
+            </p>
+        </field>
+    </record>
+</odoo>

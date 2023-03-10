@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="api.request.header" id="content_type">
+            <field name="key">Content-Type</field>
+        </record>
+        <record model="api.request.header" id="authorization">
+            <field name="key">Authorization</field>
+        </record>
+        <record model="api.request.header" id="accept">
+            <field name="key">Accept</field>
+        </record>
+        <record model="api.request.header" id="token">
+            <field name="key">Token</field>
+        </record>
+    </data>
+</odoo>
